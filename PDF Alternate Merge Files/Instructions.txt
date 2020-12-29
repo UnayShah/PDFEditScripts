@@ -1,0 +1,4 @@
+1. Add files to be merged here
+2. Rename file that should have odd page numbers as 1.PDF
+3. Rename file that should have even page numbers as 2.PDF
+4. Run the code

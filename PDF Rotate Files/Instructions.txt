@@ -1,0 +1,2 @@
+1. Add files to be rotated here. They must have .PDF extension
+2. Run the code

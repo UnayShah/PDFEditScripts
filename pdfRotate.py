@@ -5,7 +5,8 @@ folder = "./PDF Rotate Files"
 files = []
 for (dirpath, dirnames, filenames) in os.walk(folder):
     for filename in filenames:
-        files.append(dirpath+"/"+filename)
+        if(str(filename).endswith(".pdf")):
+           files.append(dirpath+"/"+filename)
         
 for f in files:
     pdf_in = open(f)

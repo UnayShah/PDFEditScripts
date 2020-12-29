@@ -1,10 +1,12 @@
 import PyPDF2
 import os
 
-folder = "./PDF Alternate Merge Files"
+folder = input("Enter directory name: ")
 
-filename1 = "1.pdf"
-filename2 = "2.pdf"
+filename1 = input("Enter name of 1st file: ")
+filename1 = filename1 if filename1.endswith('.pdf') else filename1+".pdf"
+filename2 = input("Enter name of 2nd file: ")
+filename2 = filename2 if filename2.endswith('.pdf') else filename2+".pdf"
 
 file1 = open(folder+"/"+filename1, 'rb')
 file2 = open(folder+"/"+filename2, 'rb')

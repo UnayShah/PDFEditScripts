@@ -1,5 +1,6 @@
-import PyPDF2
 import os
+
+import PyPDF2
 
 folder = input("Enter directory name: ")
 
@@ -11,25 +12,18 @@ filename2 = filename2 if filename2.endswith('.pdf') else filename2+".pdf"
 file1 = open(folder+"/"+filename1, 'rb')
 file2 = open(folder+"/"+filename2, 'rb')
 
-pdf_reader1 = PyPDF2.PdfFileReader(file1)
-pdf_reader2 = PyPDF2.PdfFileReader(file2)
+pdf_reader = PyPDF2.PdfFileReader(file1)
 
 pdf_writer = PyPDF2.PdfFileWriter()
 
-pageswritten = 0
-
-for pagenum in range(min(pdf_reader1.getNumPages(), pdf_reader2.getNumPages())):
-    page = pdf_reader1.getPage(pagenum)
+for pagenum in range(pdf_reader.getNumPages()):
+    page = pdf_reader.getPage(pagenum)
     pdf_writer.addPage(page)
-    page = pdf_reader2.getPage(pagenum)
-    pdf_writer.addPage(page)
-    pageswritten = pagenum
 
-pdf_reader1 = pdf_reader1 if (pdf_reader1.getNumPages(
-) > pdf_reader2.getNumPages()) else pdf_reader2
+pdf_reader = PyPDF2.PdfFileReader(file2)
 
-for pagenum in range(pdf_reader1.getNumPages() - pageswritten):
-    page = pdf_reader1.getPage(pagenum + pageswritten)
+for pagenum in range(pdf_reader.getNumPages()):
+    page = pdf_reader.getPage(pagenum)
     pdf_writer.addPage(page)
 
 pdf_out = open(folder+"/"+"_merged.pdf", 'wb')
